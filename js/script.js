@@ -3,81 +3,76 @@ document.addEventListener("DOMContentLoaded", () => {
     const intro = document.getElementById("intro");
 
     /*
-     * Intro selesai setelah animasi spanduk.
-     * Setelah itu elemen intro dihapus dari tampilan
-     * supaya halaman utama bisa digunakan normal.
+     * Intro berjalan sekitar 6 detik.
+     * Setelah halaman utama selesai muncul,
+     * intro dilepas dari layar.
      */
 
     setTimeout(() => {
+
         if (intro) {
-            intro.style.display = "none";
+            intro.remove();
         }
-    }, 6500);
+
+    }, 7200);
 
 
-    /* =================================
-       EFEK KLIK TOMBOL SOSIAL
-    ================================= */
+    /* ======================================
+       KLIK LINK SOSIAL
+    ====================================== */
 
-    const socialCards =
-        document.querySelectorAll(".social-card");
+    const cards = document.querySelectorAll(".social-card");
 
-    socialCards.forEach((card) => {
+    cards.forEach((card) => {
 
-        card.addEventListener("click", () => {
+        card.addEventListener("pointerdown", () => {
+            card.style.transform = "scale(.96)";
+        });
 
-            card.style.transform = "scale(0.96)";
+        card.addEventListener("pointerup", () => {
+            card.style.transform = "";
+        });
 
-            setTimeout(() => {
-                card.style.transform = "";
-            }, 150);
-
+        card.addEventListener("pointercancel", () => {
+            card.style.transform = "";
         });
 
     });
 
 
-    /* =================================
-       EFEK PARALLAX RINGAN DI HP
-    ================================= */
-
-    let lastScroll = 0;
+    /* ======================================
+       PARALLAX HALUS
+    ====================================== */
 
     window.addEventListener("scroll", () => {
 
-        const currentScroll = window.scrollY;
+        const profile =
+            document.querySelector(".profile");
 
-        if (currentScroll > lastScroll) {
-            document.body.classList.add("scrolling-down");
-        } else {
-            document.body.classList.remove("scrolling-down");
-        }
+        if (!profile) return;
 
-        lastScroll = currentScroll;
+        const scroll =
+            window.scrollY;
+
+        profile.style.transform =
+            `translateY(${scroll * 0.04}px)`;
 
     });
 
 
-    /* =================================
-       PREVENT DOUBLE TAP ZOOM
-    ================================= */
+    /* ======================================
+       TOMBOL KEMBALI KE POSISI NORMAL
+    ====================================== */
 
-    let lastTouchEnd = 0;
+    window.addEventListener("pageshow", () => {
 
-    document.addEventListener(
-        "touchend",
-        (event) => {
+        document.querySelectorAll(".social-card")
+            .forEach((card) => {
 
-            const now = Date.now();
+                card.style.transform = "";
 
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
+            });
 
-            lastTouchEnd = now;
-
-        },
-        false
-    );
+    });
 
 });
