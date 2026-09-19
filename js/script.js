@@ -2,38 +2,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const intro = document.getElementById("intro");
     const home = document.getElementById("home");
-    const cards = document.querySelectorAll(".social-card");
+
+    const socialCards =
+        document.querySelectorAll(".social-card");
 
 
     /*
-     * Setelah intro selesai,
-     * intro benar-benar dilepas agar tidak menutupi halaman.
+     * Intro selesai setelah animasi.
      */
+
     setTimeout(() => {
 
         if (intro) {
             intro.remove();
         }
 
-        if (home) {
-            home.classList.add("ready");
-        }
-
-    }, 8000);
+    }, 8200);
 
 
     /*
-     * Efek klik pada tombol sosial
+     * Efek tombol sosial
      */
-    cards.forEach(card => {
 
-        card.addEventListener("click", () => {
+    socialCards.forEach(card => {
 
-            card.style.transform = "scale(.96)";
+        card.addEventListener("pointerdown", () => {
 
-            setTimeout(() => {
-                card.style.transform = "";
-            }, 180);
+            card.style.transform =
+                "scale(.97)";
+
+        });
+
+
+        card.addEventListener("pointerup", () => {
+
+            card.style.transform = "";
+
+        });
+
+
+        card.addEventListener("pointercancel", () => {
+
+            card.style.transform = "";
 
         });
 
@@ -41,15 +51,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-     * Mencegah animasi aneh ketika halaman
-     * kembali dari tab/background.
+     * Jika user kembali ke halaman
+     * setelah berpindah aplikasi.
      */
-    document.addEventListener("visibilitychange", () => {
 
-        if (!document.hidden && home) {
-            home.style.animationPlayState = "running";
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+            if (!document.hidden && home) {
+
+                home.style.animationPlayState =
+                    "running";
+
+            }
+
         }
-
-    });
+    );
 
 });
