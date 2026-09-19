@@ -12,22 +12,30 @@ body {
 
 body {
     background: #050609;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     overflow-x: hidden;
 }
 
 
-/* =========================
+/* =================================
    INTRO
-========================= */
+================================= */
 
 .intro {
     position: fixed;
+
     inset: 0;
-    z-index: 1000;
+
+    z-index: 9999;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -35,232 +43,135 @@ body {
 
     background:
         radial-gradient(
-            circle at 65% 50%,
-            rgba(255,255,255,.10),
-            transparent 35%
+            circle at 50% 45%,
+            rgba(255,255,255,.08),
+            transparent 32%
         ),
         #050609;
 
-    animation: introDisappear .9s ease forwards;
-    animation-delay: 7s;
+    animation:
+        introExit .9s ease forwards;
+
+    animation-delay: 7.2s;
 }
 
 
-/* background light */
+/* Background */
 
-.intro-glow {
+.intro-bg {
     position: absolute;
 
-    width: 420px;
-    height: 420px;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.025),
+            transparent 40%,
+            rgba(255,255,255,.025)
+        );
+
+    animation:
+        backgroundMove 5s ease-in-out infinite alternate;
+}
+
+
+/* =================================
+   LIGHT ORBS
+================================= */
+
+.light-orb {
+    position: absolute;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,.06);
+    pointer-events: none;
 
     filter: blur(80px);
 
-    animation: glowMove 5s ease-in-out infinite alternate;
+    opacity: .25;
 }
 
+.orb-1 {
+    width: 260px;
+    height: 260px;
 
-/* =========================
-   PERSON
-========================= */
+    background: #ffffff;
 
-.person {
-    position: absolute;
-
-    width: 105px;
-    height: 310px;
-
-    left: calc(50% - 330px);
-    bottom: 10%;
-
-    z-index: 4;
-
-    opacity: 0;
+    left: 10%;
+    top: 15%;
 
     animation:
-        personEnter 1.5s cubic-bezier(.2,.8,.2,1) forwards,
-        personMove 3s ease-in-out 1.5s infinite;
+        orbMove1 5s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+    width: 220px;
+    height: 220px;
+
+    background: #777777;
+
+    right: 10%;
+    bottom: 15%;
+
+    animation:
+        orbMove2 6s ease-in-out infinite alternate;
 }
 
 
-/* head */
+/* =================================
+   INTRO BOARD
+================================= */
 
-.person-head {
-    position: absolute;
-
-    width: 48px;
-    height: 48px;
-
-    left: 28px;
-    top: 0;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #777,
-            #303030 65%,
-            #151515
-        );
-
-    box-shadow:
-        0 0 20px rgba(255,255,255,.08);
-}
-
-
-/* body */
-
-.person-body {
-    position: absolute;
-
-    width: 64px;
-    height: 125px;
-
-    left: 20px;
-    top: 55px;
-
-    border-radius: 30px 30px 14px 14px;
-
-    background:
-        linear-gradient(
-            100deg,
-            #111,
-            #444,
-            #151515
-        );
-}
-
-
-/* arms */
-
-.person-arm {
-    position: absolute;
-
-    width: 18px;
-    height: 105px;
-
-    border-radius: 15px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #111,
-            #4c4c4c,
-            #151515
-        );
-}
-
-
-/* left arm */
-
-.person-arm-left {
-    left: -18px;
-    top: 8px;
-
-    transform:
-        rotate(25deg);
-}
-
-
-/* right arm touches board */
-
-.person-arm-right {
-    right: -24px;
-    top: 8px;
-
-    transform:
-        rotate(-52deg);
-
-    transform-origin: top center;
-}
-
-
-/* hand */
-
-.person-hand {
-    position: absolute;
-
-    width: 22px;
-    height: 22px;
-
-    right: -63px;
-    top: 52px;
-
-    border-radius: 50%;
-
-    background: #555;
-
-    box-shadow:
-        0 0 12px rgba(255,255,255,.15);
-}
-
-
-/* legs */
-
-.person-leg {
-    position: absolute;
-
-    width: 24px;
-    height: 130px;
-
-    top: 170px;
-
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #101010,
-            #404040,
-            #111
-        );
-}
-
-.person-leg-left {
-    left: 28px;
-    transform: rotate(4deg);
-}
-
-.person-leg-right {
-    left: 58px;
-    transform: rotate(-5deg);
-}
-
-
-/* =========================
-   SOCIAL BOARD
-========================= */
-
-.social-board {
+.intro-board {
     position: relative;
 
-    width: min(470px, 82vw);
+    width: min(470px, 84vw);
 
-    border-radius: 30px;
+    min-height: 500px;
+
+    border-radius: 32px;
+
+    overflow: hidden;
 
     background:
         linear-gradient(
             145deg,
-            rgba(45,45,50,.98),
-            rgba(13,14,18,.98)
+            #36373c 0%,
+            #191a1e 35%,
+            #0d0e11 100%
         );
 
-    border: 1px solid rgba(255,255,255,.15);
+    border:
+        1px solid rgba(255,255,255,.18);
 
     box-shadow:
-        0 35px 90px rgba(0,0,0,.75),
-        inset 0 1px 0 rgba(255,255,255,.12);
+        0 40px 100px rgba(0,0,0,.8),
+        0 0 70px rgba(255,255,255,.06),
+        inset 0 1px 0 rgba(255,255,255,.15);
 
-    overflow: hidden;
+    transform:
+        translateY(100vh)
+        rotate(7deg)
+        scale(.88);
+
+    opacity: 0;
+
+    animation:
+        introBoardEnter 1.8s
+        cubic-bezier(.16,.82,.2,1)
+        forwards,
+
+        introBoardFloat 4s
+        ease-in-out
+        2s
+        infinite;
 }
 
 
-/* metallic bars */
+/* =================================
+   METAL BARS
+================================= */
 
 .metal-top,
 .metal-bottom {
@@ -271,17 +182,20 @@ body {
 
     height: 7px;
 
+    z-index: 5;
+
     background:
         linear-gradient(
             90deg,
-            #292929,
-            #d4d4d4,
-            #5b5b5b,
-            #dedede,
-            #252525
+            #242424,
+            #777,
+            #eeeeee,
+            #666,
+            #222
         );
 
-    opacity: .9;
+    box-shadow:
+        0 1px 4px rgba(0,0,0,.7);
 }
 
 .metal-top {
@@ -293,84 +207,339 @@ body {
 }
 
 
-/* =========================
-   INTRO BOARD
-========================= */
+/* =================================
+   INTRO CONTENT
+================================= */
 
-.intro-board {
-    position: absolute;
+.intro-content {
+    position: relative;
 
-    left: calc(50% - 40px);
-    top: 50%;
+    z-index: 3;
 
-    transform:
-        translate(100vw, -50%)
-        rotate(8deg)
-        scale(.88);
+    min-height: 500px;
 
-    opacity: 0;
+    padding:
+        60px 30px 50px;
 
-    animation:
-        boardEnter 1.8s cubic-bezier(.15,.8,.2,1) forwards,
-        introBoardFloat 3s ease-in-out 1.9s infinite;
-}
+    display: flex;
 
+    flex-direction: column;
 
-/* content */
-
-.board-content {
-    padding: 45px 32px 42px;
+    align-items: center;
+    justify-content: center;
 
     text-align: center;
 }
 
 
-/* avatar */
+/* Avatar */
 
-.avatar-mark {
-    width: 82px;
-    height: 82px;
-
-    margin: 0 auto 18px;
-
+.intro-avatar,
+.avatar {
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 50%;
 
-    font-size: 25px;
     font-weight: 900;
+
     letter-spacing: 2px;
 
-    color: #fff;
+    color: white;
 
     background:
         radial-gradient(
             circle at 35% 25%,
-            #777,
-            #26272b 65%,
-            #0e0f12
+            #888,
+            #38393d 45%,
+            #111214 100%
         );
 
-    border: 2px solid rgba(255,255,255,.35);
+    border:
+        2px solid rgba(255,255,255,.35);
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,.5),
-        inset 0 0 20px rgba(255,255,255,.08);
+        0 15px 35px rgba(0,0,0,.6),
+        inset 0 0 25px rgba(255,255,255,.08);
+}
+
+.intro-avatar {
+    width: 92px;
+    height: 92px;
+
+    font-size: 28px;
+
+    opacity: 0;
+
+    transform:
+        scale(.5);
+
+    animation:
+        avatarReveal .8s
+        cubic-bezier(.2,.8,.2,1)
+        1.2s
+        forwards;
+}
+
+
+/* Title */
+
+.intro-content h1 {
+    margin-top: 22px;
+
+    font-size:
+        clamp(28px, 7vw, 42px);
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.8);
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    animation:
+        textReveal .8s
+        ease
+        1.65s
+        forwards;
+}
+
+
+/* username */
+
+.intro-username {
+    margin-top: 8px;
+
+    color: #aaa;
+
+    font-size: 14px;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0;
+
+    animation:
+        textReveal .7s
+        ease
+        1.9s
+        forwards;
+}
+
+
+/* line */
+
+.intro-line {
+    width: 110px;
+    height: 1px;
+
+    margin: 26px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ddd,
+            transparent
+        );
+
+    opacity: 0;
+
+    animation:
+        lineReveal .8s
+        ease
+        2.15s
+        forwards;
+}
+
+
+/* description */
+
+.intro-description {
+    color: #ddd;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    animation:
+        textReveal .8s
+        ease
+        2.35s
+        forwards;
+}
+
+
+/* =================================
+   SHINE
+================================= */
+
+.shine {
+    position: absolute;
+
+    top: -20%;
+    left: -70%;
+
+    width: 35%;
+    height: 140%;
+
+    transform:
+        rotate(18deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.14),
+            transparent
+        );
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    animation:
+        shineMove 2s
+        ease
+        2.5s
+        forwards;
+}
+
+
+/* =================================
+   HOME
+================================= */
+
+#home {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        35px 15px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    animation:
+        homeReveal 1s
+        ease
+        7.35s
+        forwards;
+}
+
+
+/* background */
+
+.background {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,255,255,.09),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(255,255,255,.035),
+            transparent 30%
+        ),
+        #050609;
+}
+
+
+/* =================================
+   HOME BOARD
+================================= */
+
+.home-board {
+    position: relative;
+
+    width: min(470px, 92vw);
+
+    border-radius: 32px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #323338,
+            #17181c 40%,
+            #0b0c0f
+        );
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.75),
+        0 0 50px rgba(255,255,255,.035),
+        inset 0 1px 0 rgba(255,255,255,.1);
+
+    animation:
+        boardFloat 4.5s
+        ease-in-out
+        infinite;
+}
+
+
+/* =================================
+   HOME CONTENT
+================================= */
+
+.home-content {
+    padding:
+        48px 25px 45px;
+
+    text-align: center;
+}
+
+
+/* Avatar */
+
+.avatar {
+    width: 82px;
+    height: 82px;
+
+    margin:
+        0 auto 18px;
+
+    font-size: 25px;
 }
 
 
 /* title */
 
-.board-content h1 {
-    font-size: clamp(27px, 6vw, 38px);
+.home-content h1 {
+    font-size:
+        clamp(27px, 7vw, 39px);
 
     letter-spacing: 4px;
 
     text-shadow:
-        0 3px 20px rgba(0,0,0,.6);
+        0 5px 20px rgba(0,0,0,.7);
 }
+
+
+/* username */
 
 .username {
     margin-top: 7px;
@@ -386,10 +555,11 @@ body {
 /* separator */
 
 .separator {
-    width: 90px;
+    width: 100px;
     height: 1px;
 
-    margin: 23px auto;
+    margin:
+        23px auto;
 
     background:
         linear-gradient(
@@ -401,71 +571,20 @@ body {
 }
 
 
+/* description */
+
 .description {
     color: #ddd;
 
-    font-size: 14px;
+    font-size: 13px;
 
     letter-spacing: 1.5px;
 }
 
 
-/* =========================
-   HOME
-========================= */
-
-.home {
-    position: relative;
-
-    min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 30px 0 25px;
-
-    opacity: 0;
-
-    animation:
-        homeShow 1s ease forwards;
-
-    animation-delay: 7.15s;
-}
-
-
-.home-background {
-    position: fixed;
-    inset: 0;
-
-    z-index: -1;
-
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(255,255,255,.09),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(100,100,100,.08),
-            transparent 35%
-        ),
-        #050609;
-}
-
-
-/* home board */
-
-.home-board {
-    animation:
-        boardFloat 4.5s ease-in-out infinite;
-}
-
-
-/* online */
+/* =================================
+   ONLINE
+================================= */
 
 .online {
     display: inline-flex;
@@ -476,13 +595,18 @@ body {
 
     margin-top: 22px;
 
-    padding: 8px 14px;
+    padding:
+        8px 15px;
 
-    border-radius: 20px;
+    border-radius: 30px;
 
-    background: rgba(255,255,255,.06);
+    background:
+        rgba(255,255,255,.06);
 
-    color: #ccc;
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    color: #bbb;
 
     font-size: 12px;
 }
@@ -493,18 +617,38 @@ body {
 
     border-radius: 50%;
 
-    background: #65ff91;
+    background: #69ff96;
 
     box-shadow:
-        0 0 10px #65ff91;
+        0 0 12px #69ff96;
+
+    animation:
+        onlinePulse 1.6s
+        ease-in-out
+        infinite;
 }
 
 
-/* =========================
-   SOCIAL CARDS
-========================= */
+/* =================================
+   SOCIAL LIST
+================================= */
+
+.social-list {
+    margin-top: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* card */
 
 .social-card {
+    position: relative;
+
     display: flex;
 
     align-items: center;
@@ -513,124 +657,151 @@ body {
 
     width: 100%;
 
-    margin-top: 13px;
-
-    padding: 13px 14px;
-
-    text-decoration: none;
+    padding:
+        13px 14px;
 
     color: white;
 
-    border-radius: 17px;
+    text-decoration: none;
+
+    text-align: left;
+
+    border-radius: 18px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.09),
+            rgba(255,255,255,.095),
             rgba(255,255,255,.035)
         );
 
-    border: 1px solid rgba(255,255,255,.10);
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04);
 
     transition:
         transform .25s ease,
         background .25s ease,
-        border-color .25s ease;
+        border-color .25s ease,
+        box-shadow .25s ease;
 }
 
 .social-card:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px)
+        scale(1.01);
 
     background:
-        rgba(255,255,255,.12);
+        rgba(255,255,255,.13);
 
     border-color:
         rgba(255,255,255,.25);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.3);
 }
 
 .social-card:active {
-    transform: scale(.97);
+    transform:
+        scale(.97);
 }
 
 
 /* icon */
 
 .social-card img {
-    width: 42px;
-    height: 42px;
+    width: 43px;
+    height: 43px;
 
     object-fit: contain;
 
-    border-radius: 11px;
-
     flex-shrink: 0;
+
+    border-radius: 12px;
 }
 
 
 /* text */
 
-.social-card div {
+.social-info {
     flex: 1;
-
-    text-align: left;
 
     min-width: 0;
 }
 
-.social-card strong {
+.social-info strong {
     display: block;
 
     font-size: 15px;
 }
 
-.social-card small {
+.social-info small {
     display: block;
 
     margin-top: 4px;
 
     color: #999;
 
-    font-size: 11px;
+    font-size: 10.5px;
 
     white-space: nowrap;
+
     overflow: hidden;
+
     text-overflow: ellipsis;
 }
 
-.social-card b {
+
+/* arrow */
+
+.arrow {
+    color: #aaa;
+
     font-size: 28px;
 
-    font-weight: 300;
+    font-weight: 200;
 
-    color: #aaa;
+    transition:
+        transform .25s ease;
+}
+
+.social-card:hover .arrow {
+    transform:
+        translateX(4px);
+
+    color: white;
 }
 
 
-/* footer */
+/* =================================
+   FOOTER
+================================= */
 
 footer {
     margin-top: 18px;
 
-    color: #666;
+    color: #555;
 
-    font-size: 11px;
+    font-size: 10px;
 
     letter-spacing: 1px;
 }
 
 
-/* =========================
+/* =================================
    ANIMATIONS
-========================= */
+================================= */
 
-@keyframes boardEnter {
+@keyframes introBoardEnter {
 
     0% {
         opacity: 0;
 
         transform:
-            translate(100vw, -50%)
-            rotate(8deg)
+            translateY(100vh)
+            rotate(7deg)
             scale(.88);
     }
 
@@ -638,7 +809,7 @@ footer {
         opacity: 1;
 
         transform:
-            translate(-54%, -50%)
+            translateY(-25px)
             rotate(-2deg)
             scale(1.02);
     }
@@ -647,7 +818,7 @@ footer {
         opacity: 1;
 
         transform:
-            translate(-50%, -50%)
+            translateY(0)
             rotate(0deg)
             scale(1);
     }
@@ -659,94 +830,124 @@ footer {
     0%,
     100% {
         transform:
-            translate(-50%, -50%)
             translateY(0);
     }
 
     50% {
         transform:
-            translate(-50%, -50%)
             translateY(-7px);
     }
 }
 
 
-@keyframes personEnter {
+@keyframes avatarReveal {
 
     0% {
         opacity: 0;
 
         transform:
-            translateX(-180px);
+            scale(.5)
+            rotate(-15deg);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            scale(1.08)
+            rotate(3deg);
     }
 
     100% {
         opacity: 1;
 
         transform:
-            translateX(0);
+            scale(1)
+            rotate(0);
     }
 }
 
 
-@keyframes personMove {
+@keyframes textReveal {
 
-    0%,
-    100% {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
         transform:
             translateY(0);
     }
-
-    50% {
-        transform:
-            translateY(-5px);
-    }
 }
 
 
-@keyframes glowMove {
+@keyframes lineReveal {
 
-    0% {
-        transform:
-            translate(-30px, 0);
-    }
-
-    100% {
-        transform:
-            translate(50px, -20px);
-    }
-}
-
-
-@keyframes introDisappear {
-
-    0% {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    100% {
+    from {
         opacity: 0;
+
+        transform:
+            scaleX(0);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scaleX(1);
+    }
+}
+
+
+@keyframes shineMove {
+
+    from {
+        left: -70%;
+    }
+
+    to {
+        left: 140%;
+    }
+}
+
+
+@keyframes introExit {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+
         visibility: hidden;
+
         pointer-events: none;
     }
 }
 
 
-@keyframes homeShow {
+@keyframes homeReveal {
 
-    0% {
+    from {
         opacity: 0;
 
         transform:
-            translateY(25px);
+            translateY(35px)
+            scale(.97);
     }
 
-    100% {
+    to {
         opacity: 1;
 
         transform:
-            translateY(0);
+            translateY(0)
+            scale(1);
     }
 }
 
@@ -761,81 +962,186 @@ footer {
 
     50% {
         transform:
-            translateY(-10px);
+            translateY(-9px);
     }
 }
 
 
-/* =========================
+@keyframes onlinePulse {
+
+    0%,
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+        opacity: .45;
+
+        transform:
+            scale(.7);
+    }
+}
+
+
+@keyframes backgroundMove {
+
+    from {
+        transform:
+            translateX(-2%);
+    }
+
+    to {
+        transform:
+            translateX(2%);
+    }
+}
+
+
+@keyframes orbMove1 {
+
+    from {
+        transform:
+            translate(0,0);
+    }
+
+    to {
+        transform:
+            translate(100px,50px);
+    }
+}
+
+
+@keyframes orbMove2 {
+
+    from {
+        transform:
+            translate(0,0);
+    }
+
+    to {
+        transform:
+            translate(-80px,-40px);
+    }
+}
+
+
+/* =================================
    MOBILE
-========================= */
+================================= */
 
 @media (max-width: 600px) {
 
     .intro-board {
-        left: 56%;
+        width: 84vw;
 
-        width: 78vw;
+        min-height: 470px;
     }
 
-    .person {
-        left: 4%;
+    .intro-content {
+        min-height: 470px;
 
-        transform-origin: bottom center;
-
-        scale: .78;
-    }
-
-    .board-content {
         padding:
-            38px 22px 35px;
+            45px 22px 40px;
     }
 
-    .avatar-mark {
-        width: 70px;
-        height: 70px;
+    .intro-avatar {
+        width: 78px;
+        height: 78px;
 
-        font-size: 21px;
+        font-size: 23px;
     }
 
-    .board-content h1 {
+    .intro-content h1 {
+        font-size: 27px;
+
+        letter-spacing: 3px;
+    }
+
+    .intro-description {
+        font-size: 12px;
+    }
+
+    .home-board {
+        width: 94vw;
+    }
+
+    .home-content {
+        padding:
+            42px 18px 38px;
+    }
+
+    .avatar {
+        width: 74px;
+        height: 74px;
+
+        font-size: 22px;
+    }
+
+    .home-content h1 {
         font-size: 25px;
 
         letter-spacing: 3px;
     }
 
     .description {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .social-card {
-        padding: 11px;
+        padding: 12px;
     }
 
     .social-card img {
-        width: 38px;
-        height: 38px;
+        width: 39px;
+        height: 39px;
     }
 
-    .social-card small {
-        font-size: 10px;
+    .social-info small {
+        font-size: 9.5px;
     }
 }
 
 
+/* =================================
+   SMALL PHONE
+================================= */
+
 @media (max-width: 380px) {
 
-    .person {
-        left: 1%;
-        scale: .65;
-    }
-
     .intro-board {
-        left: 57%;
-        width: 80vw;
+        width: 88vw;
     }
 
-    .board-content h1 {
+    .intro-content h1 {
+        font-size: 23px;
+    }
+
+    .home-board {
+        width: 96vw;
+    }
+
+    .home-content h1 {
         font-size: 22px;
+    }
+}
+
+
+/* =================================
+   REDUCED MOTION
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
     }
     }
