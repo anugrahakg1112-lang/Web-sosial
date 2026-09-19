@@ -4,827 +4,468 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
-    min-height: 100vh;
-    overflow-x: hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 10%,
-            #252525 0%,
-            #0e0e0e 38%,
-            #050505 100%
-        );
-
+    background: #050609;
     color: white;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
 
-/* ==================================================
+/* =========================
    INTRO
-================================================== */
+========================= */
 
-#intro {
+.intro {
     position: fixed;
     inset: 0;
-
-    z-index: 9999;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 40%,
-            #242424,
-            #0d0d0d 55%,
-            #030303
-        );
-
-    animation:
-        introOut 1s ease 6.7s forwards;
-}
-
-
-.scene {
-    position: absolute;
-    inset: 0;
-
-    perspective: 1000px;
-}
-
-
-/* cahaya */
-
-.spotlight {
-    position: absolute;
-
-    width: 500px;
-    height: 500px;
-
-    left: 50%;
-    top: 45%;
-
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.11),
-            rgba(255,255,255,.025) 45%,
-            transparent 70%
-        );
-
-    filter: blur(10px);
-
-    animation:
-        spotlightPulse 3s ease-in-out infinite;
-}
-
-
-/* ==================================================
-   BANNER
-================================================== */
-
-.social-banner {
-    position: absolute;
-
-    width: min(600px, 80vw);
-    height: 370px;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%)
-        translateX(500px)
-        rotateY(-18deg)
-        scale(.75);
-
-    opacity: 0;
-
-    z-index: 5;
-
-    animation:
-        bannerEnter 1.6s
-        cubic-bezier(.16,.8,.2,1)
-        .6s forwards,
-
-        bannerFloat 4s
-        ease-in-out
-        3.2s infinite;
-}
-
-
-/* bagian atas */
-
-.banner-top {
-    position: absolute;
-
-    width: 94%;
-    height: 14px;
-
-    left: 3%;
-    top: 0;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #333,
-            #aaa,
-            #fff,
-            #888,
-            #333
-        );
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.5);
-
-    z-index: 4;
-}
-
-
-/* isi banner */
-
-.banner-body {
-    position: absolute;
-
-    width: 100%;
-    height: 340px;
-
-    top: 10px;
-
-    border-radius: 24px;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            #181818,
-            #303030 45%,
-            #111
-        );
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 35px 70px rgba(0,0,0,.65),
-        inset 0 1px 0 rgba(255,255,255,.1);
-
-    transform-origin: center;
-
-    animation:
-        clothMove 3.5s ease-in-out infinite;
-}
-
-
-/* cahaya banner */
-
-.banner-glow {
-    position: absolute;
-
-    width: 300px;
-    height: 300px;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.08);
-
-    filter: blur(55px);
-}
-
-
-/* garis kilau */
-
-.banner-body::after {
-    content: "";
-
-    position: absolute;
-
-    width: 100px;
-    height: 500px;
-
-    left: -180px;
-    top: -60px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    transform: rotate(25deg);
-
-    animation:
-        bannerShine 4s linear 2s infinite;
-}
-
-
-/* isi */
-
-.banner-inner {
-    position: absolute;
-    inset: 0;
+    z-index: 1000;
 
     display: flex;
-
-    flex-direction: column;
-
+    align-items: center;
     justify-content: center;
 
-    align-items: center;
+    overflow: hidden;
 
-    text-align: center;
+    background:
+        radial-gradient(
+            circle at 65% 50%,
+            rgba(255,255,255,.10),
+            transparent 35%
+        ),
+        #050609;
 
-    z-index: 2;
-
-    animation:
-        contentAppear 1s
-        ease
-        2s
-        both;
+    animation: introDisappear .9s ease forwards;
+    animation-delay: 7s;
 }
 
 
-.banner-avatar {
-    width: 82px;
-    height: 82px;
+/* background light */
 
-    padding: 4px;
+.intro-glow {
+    position: absolute;
 
-    margin-bottom: 18px;
+    width: 420px;
+    height: 420px;
 
     border-radius: 50%;
 
-    background:
-        linear-gradient(
-            135deg,
-            white,
-            #555
-        );
+    background: rgba(255,255,255,.06);
 
-    box-shadow:
-        0 10px 35px rgba(0,0,0,.5);
+    filter: blur(80px);
+
+    animation: glowMove 5s ease-in-out infinite alternate;
 }
 
 
-.banner-avatar img {
-    width: 100%;
-    height: 100%;
+/* =========================
+   PERSON
+========================= */
 
-    border-radius: 50%;
-
-    object-fit: cover;
-}
-
-
-.banner-title {
-    font-size:
-        clamp(30px, 6vw, 55px);
-
-    font-weight: 800;
-
-    letter-spacing: 4px;
-
-    text-shadow:
-        0 5px 25px #000;
-}
-
-
-.banner-user {
-    margin-top: 8px;
-
-    font-size: 14px;
-
-    color: #aaa;
-
-    letter-spacing: 2px;
-}
-
-
-.banner-line {
-    width: 90px;
-    height: 2px;
-
-    margin: 20px 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            white,
-            transparent
-        );
-}
-
-
-.banner-subtitle {
-    font-size: 13px;
-
-    letter-spacing: 2px;
-
-    color: #bbb;
-}
-
-
-/* bawah banner */
-
-.banner-bottom {
+.person {
     position: absolute;
 
-    width: 88%;
-    height: 10px;
+    width: 105px;
+    height: 310px;
 
-    left: 6%;
-    bottom: 0;
+    left: calc(50% - 330px);
+    bottom: 10%;
 
-    border-radius: 20px;
-
-    background: #222;
-
-    box-shadow:
-        0 10px 20px rgba(0,0,0,.5);
-}
-
-
-/* ==================================================
-   MANUSIA
-================================================== */
-
-.character {
-    position: absolute;
-
-    width: 145px;
-    height: 350px;
-
-    left: calc(50% - 300px);
-    bottom: 12%;
+    z-index: 4;
 
     opacity: 0;
 
-    z-index: 7;
-
-    transform:
-        translateX(-180px)
-        translateY(30px)
-        scale(.8);
-
     animation:
-        characterEnter 1.2s
-        cubic-bezier(.2,.8,.2,1)
-        1.5s
-        forwards,
-
-        characterMove 3s
-        ease-in-out
-        2.7s
-        infinite;
+        personEnter 1.5s cubic-bezier(.2,.8,.2,1) forwards,
+        personMove 3s ease-in-out 1.5s infinite;
 }
 
 
-/* bayangan */
+/* head */
 
-.shadow {
+.person-head {
     position: absolute;
 
-    width: 125px;
-    height: 20px;
+    width: 48px;
+    height: 48px;
 
-    left: 10px;
-    bottom: 0;
-
-    border-radius: 50%;
-
-    background: #000;
-
-    filter: blur(9px);
-
-    animation:
-        shadowMove 2s ease-in-out infinite;
-}
-
-
-/* kepala */
-
-.head {
-    position: absolute;
-
-    width: 57px;
-    height: 70px;
-
-    left: 44px;
+    left: 28px;
     top: 0;
 
-    border-radius:
-        48%
-        48%
-        45%
-        45%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f0bd98,
-            #b96f51
-        );
-
-    z-index: 5;
-
-    animation:
-        headMotion 2s ease-in-out infinite alternate;
-}
-
-
-/* rambut */
-
-.hair {
-    position: absolute;
-
-    width: 62px;
-    height: 36px;
-
-    left: -2px;
-    top: -5px;
-
-    border-radius:
-        60%
-        60%
-        35%
-        35%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #222,
-            #050505
-        );
-}
-
-
-/* wajah */
-
-.face {
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    right: 7px;
-    top: 35px;
-
     border-radius: 50%;
 
-    background: #333;
-}
-
-
-/* leher */
-
-.neck {
-    position: absolute;
-
-    width: 23px;
-    height: 25px;
-
-    left: 61px;
-    top: 61px;
-
-    background: #b87557;
-}
-
-
-/* badan */
-
-.shirt {
-    position: absolute;
-
-    width: 76px;
-    height: 125px;
-
-    left: 36px;
-    top: 78px;
-
-    border-radius:
-        22px
-        22px
-        12px
-        12px;
-
     background:
-        linear-gradient(
-            135deg,
-            #3b3b3b,
-            #111
+        radial-gradient(
+            circle at 35% 30%,
+            #777,
+            #303030 65%,
+            #151515
         );
 
     box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.05);
-
-    z-index: 3;
+        0 0 20px rgba(255,255,255,.08);
 }
 
 
-/* tangan */
+/* body */
 
-.arm {
+.person-body {
     position: absolute;
 
-    width: 21px;
+    width: 64px;
+    height: 125px;
+
+    left: 20px;
+    top: 55px;
+
+    border-radius: 30px 30px 14px 14px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #111,
+            #444,
+            #151515
+        );
+}
+
+
+/* arms */
+
+.person-arm {
+    position: absolute;
+
+    width: 18px;
     height: 105px;
 
-    top: 85px;
-
-    border-radius: 20px;
+    border-radius: 15px;
 
     background:
         linear-gradient(
             90deg,
-            #a9654b,
-            #e2a17e
+            #111,
+            #4c4c4c,
+            #151515
         );
+}
+
+
+/* left arm */
+
+.person-arm-left {
+    left: -18px;
+    top: 8px;
+
+    transform:
+        rotate(25deg);
+}
+
+
+/* right arm touches board */
+
+.person-arm-right {
+    right: -24px;
+    top: 8px;
+
+    transform:
+        rotate(-52deg);
 
     transform-origin: top center;
-
-    z-index: 6;
 }
 
 
-.arm-left {
-    left: 24px;
+/* hand */
 
-    transform:
-        rotate(-28deg);
-
-    animation:
-        leftArm 1.5s ease-in-out infinite alternate;
-}
-
-
-.arm-right {
-    right: 24px;
-
-    transform:
-        rotate(28deg);
-
-    animation:
-        rightArm 1.5s ease-in-out infinite alternate;
-}
-
-
-.hand {
+.person-hand {
     position: absolute;
 
     width: 22px;
     height: 22px;
 
-    bottom: -8px;
-    left: 0;
+    right: -63px;
+    top: 52px;
 
     border-radius: 50%;
 
-    background: #dfa07d;
+    background: #555;
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.15);
 }
 
 
-/* kaki */
+/* legs */
 
-.leg {
+.person-leg {
     position: absolute;
 
-    width: 28px;
-    height: 110px;
+    width: 24px;
+    height: 130px;
 
-    top: 195px;
+    top: 170px;
 
-    border-radius: 20px;
+    border-radius: 14px;
 
     background:
         linear-gradient(
             90deg,
-            #121212,
-            #383838
+            #101010,
+            #404040,
+            #111
         );
+}
 
-    transform-origin: top center;
+.person-leg-left {
+    left: 28px;
+    transform: rotate(4deg);
+}
+
+.person-leg-right {
+    left: 58px;
+    transform: rotate(-5deg);
 }
 
 
-.leg.left {
-    left: 40px;
+/* =========================
+   SOCIAL BOARD
+========================= */
 
-    animation:
-        legOne 1.2s ease-in-out infinite alternate;
-}
-
-
-.leg.right {
-    right: 40px;
-
-    animation:
-        legTwo 1.2s ease-in-out infinite alternate;
-}
-
-
-/* sepatu */
-
-.shoe {
-    position: absolute;
-
-    width: 48px;
-    height: 22px;
-
-    top: 295px;
-
-    border-radius:
-        20px
-        8px
-        8px
-        8px;
-
-    background: #050505;
-}
-
-
-.shoe.left {
-    left: 22px;
-}
-
-
-.shoe.right {
-    right: 22px;
-}
-
-
-/* ==================================================
-   BERANDA
-================================================== */
-
-#home {
-    min-height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: flex-start;
-
-    padding:
-        60px
-        16px
-        40px;
-
-    opacity: 0;
-
-    animation:
-        homeReveal 1.2s
-        ease
-        6.2s
-        forwards;
-}
-
-
-.home-board {
+.social-board {
     position: relative;
 
-    width: min(620px, 100%);
-
-    padding:
-        40px
-        25px
-        25px;
+    width: min(470px, 82vw);
 
     border-radius: 30px;
-
-    overflow: hidden;
 
     background:
         linear-gradient(
             145deg,
-            #252525,
-            #0b0b0b
+            rgba(45,45,50,.98),
+            rgba(13,14,18,.98)
         );
 
-    border:
-        1px solid rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.15);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.65);
+        0 35px 90px rgba(0,0,0,.75),
+        inset 0 1px 0 rgba(255,255,255,.12);
 
-    animation:
-        boardFloat 4s ease-in-out 7s infinite;
+    overflow: hidden;
 }
 
 
-.board-shine {
+/* metallic bars */
+
+.metal-top,
+.metal-bottom {
     position: absolute;
 
-    width: 300px;
-    height: 300px;
+    left: 0;
+    right: 0;
 
-    left: 50%;
-    top: -100px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.04);
-
-    filter: blur(45px);
-}
-
-
-/* ==================================================
-   PROFILE
-================================================== */
-
-.profile {
-    position: relative;
-
-    text-align: center;
-
-    z-index: 2;
-}
-
-
-.profile-logo {
-    width: 90px;
-    height: 90px;
-
-    margin:
-        0 auto
-        18px;
-
-    padding: 4px;
-
-    border-radius: 50%;
+    height: 7px;
 
     background:
         linear-gradient(
-            135deg,
-            white,
-            #555
+            90deg,
+            #292929,
+            #d4d4d4,
+            #5b5b5b,
+            #dedede,
+            #252525
         );
 
-    animation:
-        logoFloat 3s ease-in-out 7.5s infinite;
+    opacity: .9;
+}
+
+.metal-top {
+    top: 0;
+}
+
+.metal-bottom {
+    bottom: 0;
 }
 
 
-.profile-logo img {
-    width: 100%;
-    height: 100%;
+/* =========================
+   INTRO BOARD
+========================= */
 
-    object-fit: cover;
+.intro-board {
+    position: absolute;
+
+    left: calc(50% - 40px);
+    top: 50%;
+
+    transform:
+        translate(100vw, -50%)
+        rotate(8deg)
+        scale(.88);
+
+    opacity: 0;
+
+    animation:
+        boardEnter 1.8s cubic-bezier(.15,.8,.2,1) forwards,
+        introBoardFloat 3s ease-in-out 1.9s infinite;
+}
+
+
+/* content */
+
+.board-content {
+    padding: 45px 32px 42px;
+
+    text-align: center;
+}
+
+
+/* avatar */
+
+.avatar-mark {
+    width: 82px;
+    height: 82px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 50%;
-}
 
-
-.profile h1 {
-    font-size: 30px;
-
+    font-size: 25px;
+    font-weight: 900;
     letter-spacing: 2px;
+
+    color: #fff;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            #777,
+            #26272b 65%,
+            #0e0f12
+        );
+
+    border: 2px solid rgba(255,255,255,.35);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.5),
+        inset 0 0 20px rgba(255,255,255,.08);
 }
 
+
+/* title */
+
+.board-content h1 {
+    font-size: clamp(27px, 6vw, 38px);
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 3px 20px rgba(0,0,0,.6);
+}
 
 .username {
-    margin-top: 6px;
+    margin-top: 7px;
 
-    color: #999;
+    color: #aaa;
 
     font-size: 14px;
+
+    letter-spacing: 1px;
 }
 
 
-.profile p {
-    margin-top: 12px;
+/* separator */
 
-    color: #ccc;
+.separator {
+    width: 90px;
+    height: 1px;
 
-    font-size: 14px;
+    margin: 23px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #aaa,
+            transparent
+        );
 }
 
+
+.description {
+    color: #ddd;
+
+    font-size: 14px;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.home {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 0 25px;
+
+    opacity: 0;
+
+    animation:
+        homeShow 1s ease forwards;
+
+    animation-delay: 7.15s;
+}
+
+
+.home-background {
+    position: fixed;
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,255,255,.09),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(100,100,100,.08),
+            transparent 35%
+        ),
+        #050609;
+}
+
+
+/* home board */
+
+.home-board {
+    animation:
+        boardFloat 4.5s ease-in-out infinite;
+}
+
+
+/* online */
 
 .online {
     display: inline-flex;
@@ -833,200 +474,255 @@ body {
 
     gap: 8px;
 
-    margin-top: 15px;
+    margin-top: 22px;
 
-    padding:
-        7px 13px;
+    padding: 8px 14px;
 
-    border-radius: 30px;
+    border-radius: 20px;
 
-    background:
-        rgba(255,255,255,.06);
+    background: rgba(255,255,255,.06);
 
-    color: #999;
+    color: #ccc;
 
     font-size: 12px;
 }
 
-
 .online span {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
 
     border-radius: 50%;
 
-    background: #4bea76;
+    background: #65ff91;
 
     box-shadow:
-        0 0 12px #4bea76;
-
-    animation:
-        onlinePulse 1.5s infinite;
+        0 0 10px #65ff91;
 }
 
 
-/* ==================================================
-   SOSIAL
-================================================== */
-
-.social-links {
-    position: relative;
-
-    margin-top: 32px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 13px;
-
-    z-index: 2;
-}
-
+/* =========================
+   SOCIAL CARDS
+========================= */
 
 .social-card {
-    position: relative;
-
-    min-height: 72px;
-
     display: flex;
 
     align-items: center;
 
     gap: 14px;
 
-    padding:
-        11px 16px;
+    width: 100%;
 
-    border-radius: 18px;
+    margin-top: 13px;
 
-    color: white;
+    padding: 13px 14px;
 
     text-decoration: none;
 
-    background:
-        rgba(255,255,255,.055);
+    color: white;
 
-    border:
-        1px solid rgba(255,255,255,.08);
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.035)
+        );
+
+    border: 1px solid rgba(255,255,255,.10);
 
     transition:
-        transform .3s ease,
-        background .3s ease,
-        box-shadow .3s ease;
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
 }
-
 
 .social-card:hover {
-    transform:
-        translateY(-4px)
-        scale(1.015);
+    transform: translateY(-4px);
 
     background:
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.12);
 
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.35);
+    border-color:
+        rgba(255,255,255,.25);
 }
-
 
 .social-card:active {
     transform: scale(.97);
 }
 
 
+/* icon */
+
 .social-card img {
-    width: 46px;
-    height: 46px;
+    width: 42px;
+    height: 42px;
 
     object-fit: contain;
+
+    border-radius: 11px;
 
     flex-shrink: 0;
 }
 
 
-.social-text {
-    display: flex;
-    flex-direction: column;
+/* text */
 
-    gap: 5px;
+.social-card div {
+    flex: 1;
+
+    text-align: left;
 
     min-width: 0;
-
-    flex: 1;
 }
 
+.social-card strong {
+    display: block;
 
-.social-text strong {
     font-size: 15px;
 }
 
+.social-card small {
+    display: block;
 
-.social-text small {
+    margin-top: 4px;
+
     color: #999;
 
     font-size: 11px;
 
-    overflow: hidden;
-
     white-space: nowrap;
-
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
+.social-card b {
+    font-size: 28px;
 
-.arrow {
-    font-size: 30px;
+    font-weight: 300;
 
-    color: #777;
-
-    transition:
-        transform .3s ease,
-        color .3s ease;
-}
-
-
-.social-card:hover .arrow {
-    color: white;
-
-    transform:
-        translateX(5px);
+    color: #aaa;
 }
 
 
 /* footer */
 
 footer {
-    position: relative;
+    margin-top: 18px;
 
-    margin-top: 28px;
-
-    padding-top: 18px;
-
-    text-align: center;
-
-    border-top:
-        1px solid rgba(255,255,255,.06);
-
-    color: #555;
+    color: #666;
 
     font-size: 11px;
 
-    z-index: 2;
+    letter-spacing: 1px;
 }
 
 
-/* ==================================================
-   KEYFRAMES
-================================================== */
+/* =========================
+   ANIMATIONS
+========================= */
 
-@keyframes introOut {
+@keyframes boardEnter {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(100vw, -50%)
+            rotate(8deg)
+            scale(.88);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            translate(-54%, -50%)
+            rotate(-2deg)
+            scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg)
+            scale(1);
+    }
+}
+
+
+@keyframes introBoardFloat {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, -50%)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            translateY(-7px);
+    }
+}
+
+
+@keyframes personEnter {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(-180px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes personMove {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-5px);
+    }
+}
+
+
+@keyframes glowMove {
+
+    0% {
+        transform:
+            translate(-30px, 0);
+    }
+
+    100% {
+        transform:
+            translate(50px, -20px);
+    }
+}
+
+
+@keyframes introDisappear {
 
     0% {
         opacity: 1;
-    }
-
-    75% {
-        opacity: 1;
+        visibility: visible;
     }
 
     100% {
@@ -1037,462 +733,109 @@ footer {
 }
 
 
-@keyframes spotlightPulse {
-
-    0%,
-    100% {
-        transform:
-            translate(-50%, -50%)
-            scale(.9);
-
-        opacity: .6;
-    }
-
-    50% {
-        transform:
-            translate(-50%, -50%)
-            scale(1.1);
-
-        opacity: 1;
-    }
-}
-
-
-/* banner masuk dari samping */
-
-@keyframes bannerEnter {
+@keyframes homeShow {
 
     0% {
         opacity: 0;
 
         transform:
-            translate(-50%, -50%)
-            translateX(500px)
-            rotateY(-18deg)
-            scale(.75);
-    }
-
-    65% {
-        opacity: 1;
+            translateY(25px);
     }
 
     100% {
         opacity: 1;
 
         transform:
-            translate(-50%, -50%)
-            translateX(0)
-            rotateY(0)
-            scale(1);
+            translateY(0);
     }
 }
 
-
-/* banner naik turun */
-
-@keyframes bannerFloat {
-
-    0%,
-    100% {
-        margin-top: 0;
-        rotate: 0deg;
-    }
-
-    25% {
-        margin-top: -10px;
-        rotate: -.4deg;
-    }
-
-    50% {
-        margin-top: 3px;
-        rotate: .4deg;
-    }
-
-    75% {
-        margin-top: -7px;
-        rotate: -.2deg;
-    }
-}
-
-
-/* kain */
-
-@keyframes clothMove {
-
-    0%,
-    100% {
-        transform:
-            skewY(0deg)
-            rotateY(0deg);
-    }
-
-    50% {
-        transform:
-            skewY(.6deg)
-            rotateY(1deg);
-    }
-}
-
-
-/* kilau */
-
-@keyframes bannerShine {
-
-    0% {
-        left: -180px;
-    }
-
-    45%,
-    100% {
-        left: 750px;
-    }
-}
-
-
-/* tulisan */
-
-@keyframes contentAppear {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translateY(30px)
-            scale(.9);
-    }
-
-    100% {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* manusia masuk */
-
-@keyframes characterEnter {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translateX(-180px)
-            translateY(30px)
-            scale(.8);
-    }
-
-    70% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-
-        transform:
-            translateX(0)
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* gerakan manusia */
-
-@keyframes characterMove {
-
-    0%,
-    100% {
-        margin-top: 0;
-
-        transform:
-            translateX(0)
-            rotate(0deg);
-    }
-
-    25% {
-        margin-top: -5px;
-
-        transform:
-            translateX(5px)
-            rotate(-1deg);
-    }
-
-    50% {
-        margin-top: 2px;
-
-        transform:
-            translateX(-3px)
-            rotate(1deg);
-    }
-
-    75% {
-        margin-top: -4px;
-
-        transform:
-            translateX(3px)
-            rotate(-.5deg);
-    }
-}
-
-
-/* kepala */
-
-@keyframes headMotion {
-
-    from {
-        transform: rotate(-3deg);
-    }
-
-    to {
-        transform: rotate(3deg);
-    }
-}
-
-
-/* tangan */
-
-@keyframes leftArm {
-
-    from {
-        transform: rotate(-28deg);
-    }
-
-    to {
-        transform: rotate(-38deg);
-    }
-}
-
-
-@keyframes rightArm {
-
-    from {
-        transform: rotate(28deg);
-    }
-
-    to {
-        transform: rotate(38deg);
-    }
-}
-
-
-/* kaki */
-
-@keyframes legOne {
-
-    from {
-        transform: rotate(3deg);
-    }
-
-    to {
-        transform: rotate(8deg);
-    }
-}
-
-
-@keyframes legTwo {
-
-    from {
-        transform: rotate(-3deg);
-    }
-
-    to {
-        transform: rotate(-8deg);
-    }
-}
-
-
-/* bayangan */
-
-@keyframes shadowMove {
-
-    0%,
-    100% {
-        transform: scaleX(.9);
-        opacity: .6;
-    }
-
-    50% {
-        transform: scaleX(1.05);
-        opacity: .9;
-    }
-}
-
-
-/* beranda */
-
-@keyframes homeReveal {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translateY(80px)
-            scale(.94);
-    }
-
-    100% {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* papan naik turun */
 
 @keyframes boardFloat {
 
     0%,
     100% {
         transform:
-            translateY(0)
-            rotate(0deg);
-    }
-
-    25% {
-        transform:
-            translateY(-9px)
-            rotate(-.25deg);
+            translateY(0);
     }
 
     50% {
         transform:
-            translateY(3px)
-            rotate(.25deg);
-    }
-
-    75% {
-        transform:
-            translateY(-6px)
-            rotate(-.15deg);
+            translateY(-10px);
     }
 }
 
 
-/* logo */
-
-@keyframes logoFloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-7px);
-    }
-}
-
-
-/* online */
-
-@keyframes onlinePulse {
-
-    0%,
-    100% {
-        transform: scale(.8);
-        opacity: .5;
-    }
-
-    50% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
-}
-
-
-/* ==================================================
+/* =========================
    MOBILE
-================================================== */
+========================= */
 
 @media (max-width: 600px) {
 
-    .social-banner {
-        width: 86vw;
-        height: 320px;
+    .intro-board {
+        left: 56%;
+
+        width: 78vw;
     }
 
-    .banner-body {
-        height: 290px;
+    .person {
+        left: 4%;
+
+        transform-origin: bottom center;
+
+        scale: .78;
     }
 
-    .banner-title {
-        font-size: 29px;
-        letter-spacing: 2px;
-    }
-
-    .banner-avatar {
-        width: 68px;
-        height: 68px;
-    }
-
-    .character {
-        left: calc(50% - 245px);
-
-        transform:
-            translateX(-120px)
-            translateY(30px)
-            scale(.72);
-    }
-
-    .home-board {
+    .board-content {
         padding:
-            32px 17px 22px;
-
-        border-radius: 24px;
+            38px 22px 35px;
     }
 
-    .profile h1 {
+    .avatar-mark {
+        width: 70px;
+        height: 70px;
+
+        font-size: 21px;
+    }
+
+    .board-content h1 {
         font-size: 25px;
+
+        letter-spacing: 3px;
+    }
+
+    .description {
+        font-size: 12px;
     }
 
     .social-card {
-        min-height: 68px;
+        padding: 11px;
     }
 
     .social-card img {
-        width: 42px;
-        height: 42px;
-    }
-}
-
-
-@media (max-width: 390px) {
-
-    .social-banner {
-        width: 90vw;
+        width: 38px;
+        height: 38px;
     }
 
-    .banner-title {
-        font-size: 25px;
-    }
-
-    .banner-subtitle {
+    .social-card small {
         font-size: 10px;
     }
-
-    .character {
-        transform:
-            translateX(-120px)
-            translateY(30px)
-            scale(.6);
-    }
 }
 
 
-/* kurangi animasi jika user memilih reduced motion */
+@media (max-width: 380px) {
 
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
+    .person {
+        left: 1%;
+        scale: .65;
     }
-}
+
+    .intro-board {
+        left: 57%;
+        width: 80vw;
+    }
+
+    .board-content h1 {
+        font-size: 22px;
+    }
+    }
