@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#080808">
+
     <title>DANCOGEMING</title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -11,118 +11,74 @@
 
 <body>
 
-    <!-- =========================
-         INTRO BANNER
-    ========================== -->
+    <!-- INTRO -->
+    <section id="intro" class="intro">
 
-    <div id="intro">
+        <div class="intro-glow"></div>
 
-        <div class="scene">
+        <!-- Orang CSS -->
+        <div class="person">
+            <div class="person-head"></div>
 
-            <div class="spotlight"></div>
-
-            <!-- Manusia -->
-            <div class="character">
-
-                <div class="shadow"></div>
-
-                <div class="head">
-                    <div class="hair"></div>
-                    <div class="face"></div>
-                </div>
-
-                <div class="neck"></div>
-
-                <div class="shirt"></div>
-
-                <div class="arm arm-left">
-                    <div class="hand"></div>
-                </div>
-
-                <div class="arm arm-right">
-                    <div class="hand"></div>
-                </div>
-
-                <div class="leg left"></div>
-                <div class="leg right"></div>
-
-                <div class="shoe left"></div>
-                <div class="shoe right"></div>
-
+            <div class="person-body">
+                <div class="person-arm person-arm-left"></div>
+                <div class="person-arm person-arm-right"></div>
             </div>
 
+            <div class="person-leg person-leg-left"></div>
+            <div class="person-leg person-leg-right"></div>
 
-            <!-- Banner sosial -->
-            <div class="social-banner">
-
-                <div class="banner-top"></div>
-
-                <div class="banner-body">
-
-                    <div class="banner-glow"></div>
-
-                    <div class="banner-inner">
-
-                        <div class="banner-avatar">
-                            <img
-                                src="assets/icons/youtube.png"
-                                alt="DANCOGEMING"
-                            >
-                        </div>
-
-                        <div class="banner-title">
-                            DANCOGEMING
-                        </div>
-
-                        <div class="banner-user">
-                            @DANCOGEMING
-                        </div>
-
-                        <div class="banner-line"></div>
-
-                        <div class="banner-subtitle">
-                            Gaming • Content • Community
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="banner-bottom"></div>
-
-            </div>
-
+            <div class="person-hand"></div>
         </div>
 
-    </div>
+        <!-- Papan -->
+        <div class="social-board intro-board">
 
+            <div class="metal-top"></div>
 
-    <!-- =========================
-         BERANDA SOSIAL
-    ========================== -->
+            <div class="board-content">
 
-    <main id="home">
-
-        <div class="home-board">
-
-            <div class="board-shine"></div>
-
-            <section class="profile">
-
-                <div class="profile-logo">
-                    <img
-                        src="assets/icons/youtube.png"
-                        alt="DANCOGEMING"
-                    >
-                </div>
+                <div class="avatar-mark">DG</div>
 
                 <h1>DANCOGEMING</h1>
 
-                <div class="username">
-                    @DANCOGEMING
-                </div>
+                <p class="username">@DANCOGEMING</p>
 
-                <p>
+                <div class="separator"></div>
+
+                <p class="description">
+                    Gaming • Content • Community
+                </p>
+
+            </div>
+
+            <div class="metal-bottom"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOME -->
+    <main id="home" class="home">
+
+        <div class="home-background"></div>
+
+        <section class="social-board home-board">
+
+            <div class="metal-top"></div>
+
+            <div class="board-content">
+
+                <div class="avatar-mark home-avatar">DG</div>
+
+                <h1>DANCOGEMING</h1>
+
+                <p class="username">@DANCOGEMING</p>
+
+                <div class="separator"></div>
+
+                <p class="description">
                     Gaming • Content • Community
                 </p>
 
@@ -131,18 +87,13 @@
                     Online Community
                 </div>
 
-            </section>
 
-
-            <!-- LINK SOSIAL -->
-
-            <section class="social-links">
-
+                <!-- WHATSAPP -->
                 <a
                     class="social-card"
                     href="https://whatsapp.com/channel/0029Vb75UPMIN9ixcmwkXV3b"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                 >
 
                     <img
@@ -150,23 +101,22 @@
                         alt="WhatsApp"
                     >
 
-                    <div class="social-text">
-                        <strong>Saluran WhatsApp</strong>
-                        <small>
-                            Ikuti 𝙉𝙖𝙩𝙩𝙯𝙯 | 𝙈𝙞𝙣𝙚𝙘𝙧𝙖ft
-                        </small>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        <small>Ikuti Saluran 𝙉𝙖𝙩𝙩𝙯𝙯 | 𝙈𝙞𝙣𝙚𝙘𝙧𝙖ft</small>
                     </div>
 
-                    <span class="arrow">›</span>
+                    <b>›</b>
 
                 </a>
 
 
+                <!-- YOUTUBE -->
                 <a
                     class="social-card"
                     href="https://www.youtube.com/@DANCOGEMING-x2011"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                 >
 
                     <img
@@ -174,23 +124,22 @@
                         alt="YouTube"
                     >
 
-                    <div class="social-text">
+                    <div>
                         <strong>YouTube</strong>
-                        <small>
-                            @DANCOGEMING-x2011
-                        </small>
+                        <small>@DANCOGEMING-x2011</small>
                     </div>
 
-                    <span class="arrow">›</span>
+                    <b>›</b>
 
                 </a>
 
 
+                <!-- INSTAGRAM -->
                 <a
                     class="social-card"
                     href="https://www.instagram.com/muhanugraharun.s?stkn=MTgxbmM1dTR4azJ0"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                 >
 
                     <img
@@ -198,25 +147,24 @@
                         alt="Instagram"
                     >
 
-                    <div class="social-text">
+                    <div>
                         <strong>Instagram</strong>
-                        <small>
-                            @muhanugraharun.s
-                        </small>
+                        <small>@muhanugraharun.s</small>
                     </div>
 
-                    <span class="arrow">›</span>
+                    <b>›</b>
 
                 </a>
 
-            </section>
+            </div>
 
+            <div class="metal-bottom"></div>
 
-            <footer>
-                © 2026 DANCOGEMING
-            </footer>
+        </section>
 
-        </div>
+        <footer>
+            © 2026 DANCOGEMING
+        </footer>
 
     </main>
 
