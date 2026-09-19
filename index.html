@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#080808">
-
+    <meta name="theme-color" content="#070707">
     <title>DANCOGEMING</title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -12,28 +11,67 @@
 
 <body>
 
-    <!-- =========================
-         INTRO / ANIMASI PEMBUKA
-    ========================== -->
+<!-- =========================
+     INTRO
+========================= -->
+<div id="intro">
 
-    <div id="intro">
+    <div class="intro-glow"></div>
+    <div class="intro-floor"></div>
 
-        <!-- Orang yang menarik spanduk -->
-        <div class="person" id="person">
+    <!-- ORANG -->
+    <div class="person">
 
-            <div class="head"></div>
+        <div class="person-shadow"></div>
 
-            <div class="body"></div>
+        <div class="person-body">
 
-            <div class="arm arm-left"></div>
-            <div class="arm arm-right"></div>
+            <div class="head">
+                <div class="hair"></div>
+                <div class="face"></div>
+            </div>
+
+            <div class="neck"></div>
+
+            <div class="torso"></div>
+
+            <div class="arm arm-left">
+                <div class="forearm"></div>
+                <div class="hand"></div>
+            </div>
+
+            <div class="arm arm-right">
+                <div class="forearm"></div>
+                <div class="hand"></div>
+            </div>
+
+            <div class="leg leg-left"></div>
+            <div class="leg leg-right"></div>
+
+            <div class="shoe shoe-left"></div>
+            <div class="shoe shoe-right"></div>
 
         </div>
+    </div>
 
-        <!-- Spanduk -->
-        <div class="banner" id="banner">
+
+    <!-- SPANDUK -->
+    <div class="banner-system">
+
+        <div class="banner-top">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="rope rope-left"></div>
+        <div class="rope rope-right"></div>
+
+        <div class="banner">
+
+            <div class="banner-wave"></div>
 
             <div class="banner-content">
+                <div class="mini-title">WELCOME TO</div>
                 <h1>DANCOGEMING</h1>
                 <p>Gaming • Content • Community</p>
             </div>
@@ -42,15 +80,20 @@
 
     </div>
 
+</div>
 
-    <!-- =========================
-         HALAMAN UTAMA
-    ========================== -->
 
-    <main id="main-content">
+<!-- =========================
+     BERANDA
+========================= -->
+
+<main id="home">
+
+    <div class="home-board">
+
+        <div class="board-light"></div>
 
         <!-- PROFIL -->
-
         <section class="profile">
 
             <div class="profile-logo">
@@ -70,107 +113,96 @@
                 Gaming • Content • Community
             </p>
 
-            <p class="status">
-                🟢 Online Community
-            </p>
+            <div class="online">
+                <span></span>
+                Online Community
+            </div>
 
         </section>
 
 
-        <!-- =========================
-             LINK SOSIAL
-        ========================== -->
-
+        <!-- SOSIAL -->
         <section class="social-links">
 
-            <!-- WHATSAPP -->
-
             <a
+                class="social-card whatsapp"
                 href="https://whatsapp.com/channel/0029Vb75UPMIN9ixcmwkXV3b"
-                class="social-card"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-
                 <img
                     src="assets/icons/whatsapp.png"
                     alt="WhatsApp"
                 >
 
-                <div class="social-info">
+                <div>
                     <strong>Saluran WhatsApp</strong>
-                    <small>Ikuti 𝙉𝙖𝙩𝙩𝙯𝙯 | 𝙈𝙞𝙣𝙚𝙘𝙧𝙖ft</small>
+                    <small>
+                        Ikuti 𝙉𝙖𝙩𝙩𝙯𝙯 | 𝙈𝙞𝙣𝙚𝙘𝙧𝙖ft
+                    </small>
                 </div>
 
+                <b>›</b>
             </a>
 
 
-            <!-- YOUTUBE -->
-
             <a
+                class="social-card youtube"
                 href="https://www.youtube.com/@DANCOGEMING-x2011"
-                class="social-card"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-
                 <img
                     src="assets/icons/youtube.png"
                     alt="YouTube"
                 >
 
-                <div class="social-info">
+                <div>
                     <strong>YouTube</strong>
-                    <small>@DANCOGEMING-x2011</small>
+                    <small>
+                        @DANCOGEMING-x2011
+                    </small>
                 </div>
 
+                <b>›</b>
             </a>
 
 
-            <!-- INSTAGRAM -->
-
             <a
+                class="social-card instagram"
                 href="https://www.instagram.com/muhanugraharun.s?stkn=MTgxbmM1dTR4azJ0"
-                class="social-card"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-
                 <img
                     src="assets/icons/instagram.png"
                     alt="Instagram"
                 >
 
-                <div class="social-info">
+                <div>
                     <strong>Instagram</strong>
-                    <small>@muhanugraharun.s</small>
+                    <small>
+                        @muhanugraharun.s
+                    </small>
                 </div>
 
+                <b>›</b>
             </a>
 
         </section>
 
 
-        <!-- =========================
-             FOOTER
-        ========================== -->
-
         <footer>
-
-            <p>© 2026 DANCOGEMING</p>
-
-            <p>
-                Gaming • Content • Community
-            </p>
-
+            <span>© 2026 DANCOGEMING</span>
+            <span>Gaming • Content • Community</span>
         </footer>
 
-    </main>
+    </div>
+
+</main>
 
 
-    <!-- JAVASCRIPT -->
-
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
