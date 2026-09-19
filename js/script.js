@@ -1,80 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const intro = document.getElementById("intro");
+    const home = document.getElementById("home");
     const cards = document.querySelectorAll(".social-card");
 
-    /*
-     * Intro benar-benar dihapus setelah
-     * seluruh animasi selesai.
-     */
 
+    /*
+     * Setelah intro selesai,
+     * intro benar-benar dilepas agar tidak menutupi halaman.
+     */
     setTimeout(() => {
 
         if (intro) {
             intro.remove();
         }
 
-    }, 7900);
+        if (home) {
+            home.classList.add("ready");
+        }
+
+    }, 8000);
 
 
     /*
-     * Efek tekan kartu sosial
+     * Efek klik pada tombol sosial
      */
+    cards.forEach(card => {
 
-    cards.forEach((card) => {
+        card.addEventListener("click", () => {
 
-        card.addEventListener("pointerdown", () => {
-            card.style.transform = "scale(.97)";
-        });
+            card.style.transform = "scale(.96)";
 
-        card.addEventListener("pointerup", () => {
-            card.style.transform = "";
-        });
-
-        card.addEventListener("pointercancel", () => {
-            card.style.transform = "";
-        });
-
-        card.addEventListener("pointerleave", () => {
-            card.style.transform = "";
-        });
-
-    });
-
-
-    /*
-     * Efek gerak papan mengikuti sedikit scroll.
-     * Tidak mengganggu animasi naik-turun CSS.
-     */
-
-    const board =
-        document.querySelector(".home-board");
-
-    let scrolling = false;
-
-    window.addEventListener("scroll", () => {
-
-        if (scrolling) return;
-
-        scrolling = true;
-
-        requestAnimationFrame(() => {
-
-            if (board) {
-
-                const amount =
-                    Math.min(
-                        window.scrollY * 0.02,
-                        10
-                    );
-
-                board.style.setProperty(
-                    "--scroll-y",
-                    `${amount}px`
-                );
-            }
-
-            scrolling = false;
+            setTimeout(() => {
+                card.style.transform = "";
+            }, 180);
 
         });
 
@@ -82,14 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-     * Reset ketika halaman dibuka kembali
+     * Mencegah animasi aneh ketika halaman
+     * kembali dari tab/background.
      */
+    document.addEventListener("visibilitychange", () => {
 
-    window.addEventListener("pageshow", () => {
-
-        cards.forEach((card) => {
-            card.style.transform = "";
-        });
+        if (!document.hidden && home) {
+            home.style.animationPlayState = "running";
+        }
 
     });
 
