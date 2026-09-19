@@ -1,12 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const intro = document.getElementById("intro");
+    const home = document.getElementById("home");
+    const board = document.querySelector(".home-board");
+    const cards = document.querySelectorAll(".social-card");
 
-    /*
-     * Intro berjalan sekitar 6 detik.
-     * Setelah halaman utama selesai muncul,
-     * intro dilepas dari layar.
-     */
+
+    /* ==========================================
+       INTRO SELESAI
+    ========================================== */
 
     setTimeout(() => {
 
@@ -14,65 +16,151 @@ document.addEventListener("DOMContentLoaded", () => {
             intro.remove();
         }
 
-    }, 7200);
+    }, 7900);
 
 
-    /* ======================================
-       KLIK LINK SOSIAL
-    ====================================== */
-
-    const cards = document.querySelectorAll(".social-card");
+    /* ==========================================
+       KARTU SOSIAL
+    ========================================== */
 
     cards.forEach((card) => {
 
         card.addEventListener("pointerdown", () => {
-            card.style.transform = "scale(.96)";
+
+            card.classList.add("pressed");
+
         });
+
 
         card.addEventListener("pointerup", () => {
-            card.style.transform = "";
+
+            card.classList.remove("pressed");
+
         });
 
+
         card.addEventListener("pointercancel", () => {
-            card.style.transform = "";
+
+            card.classList.remove("pressed");
+
+        });
+
+
+        card.addEventListener("pointerleave", () => {
+
+            card.classList.remove("pressed");
+
         });
 
     });
 
 
-    /* ======================================
-       PARALLAX HALUS
-    ====================================== */
+    /* ==========================================
+       EFEK PAPAN BERANDA SAAT SCROLL
+    ========================================== */
+
+    let ticking = false;
 
     window.addEventListener("scroll", () => {
 
-        const profile =
-            document.querySelector(".profile");
+        if (!ticking) {
 
-        if (!profile) return;
+            window.requestAnimationFrame(() => {
 
-        const scroll =
-            window.scrollY;
+                if (board) {
 
-        profile.style.transform =
-            `translateY(${scroll * 0.04}px)`;
+                    const scroll =
+                        window.scrollY;
 
-    });
+                    const movement =
+                        Math.min(scroll * 0.025, 12);
 
+                    board.style.transform =
+                        `translateY(${movement}px)`;
 
-    /* ======================================
-       TOMBOL KEMBALI KE POSISI NORMAL
-    ====================================== */
+                }
 
-    window.addEventListener("pageshow", () => {
-
-        document.querySelectorAll(".social-card")
-            .forEach((card) => {
-
-                card.style.transform = "";
+                ticking = false;
 
             });
 
+            ticking = true;
+
+        }
+
     });
+
+
+    /* ==========================================
+       TOMBOL KEMBALI KE POSISI NORMAL
+    ========================================== */
+
+    window.addEventListener("pageshow", () => {
+
+        cards.forEach((card) => {
+
+            card.classList.remove("pressed");
+
+        });
+
+        if (board) {
+            board.style.transform = "";
+        }
+
+    });
+
+
+    /* ==========================================
+       PARALLAX HALUS PADA MOUSE
+       Desktop saja
+    ========================================== */
+
+    if (window.matchMedia("(pointer:fine)").matches) {
+
+        document.addEventListener("mousemove", (event) => {
+
+            if (!board) return;
+
+            const x =
+                (event.clientX / window.innerWidth - .5);
+
+            const y =
+                (event.clientY / window.innerHeight - .5);
+
+            board.style.setProperty(
+                "--mouse-x",
+                `${x * 5}px`
+            );
+
+            board.style.setProperty(
+                "--mouse-y",
+                `${y * 5}px`
+            );
+
+        });
+
+    }
+
+
+    /* ==========================================
+       LINK EXTERNAL
+    ========================================== */
+
+    document.querySelectorAll("a[target='_blank']")
+        .forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                link.style.opacity = ".75";
+
+                setTimeout(() => {
+
+                    link.style.opacity = "";
+
+                }, 300);
+
+            });
+
+        });
 
 });
