@@ -1,3 +1,8 @@
+/* =========================================================
+   DANCOGEMING — FINAL STYLE
+   INTRO + BERANDA ANIMASI
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,79 +16,138 @@ html {
 body {
     min-height: 100vh;
     overflow-x: hidden;
+
     color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background:
-        radial-gradient(circle at 50% 15%, #303030 0%, #111 38%, #030303 80%);
+        radial-gradient(
+            circle at 50% 0%,
+            #303030 0%,
+            #141414 35%,
+            #050505 75%,
+            #000 100%
+        );
 }
 
-/* ==================================================
+
+/* =========================================================
    INTRO
-================================================== */
+========================================================= */
 
 #intro {
     position: fixed;
+
     inset: 0;
-    z-index: 9999;
+
+    z-index: 99999;
+
     overflow: hidden;
+
     background:
-        radial-gradient(circle at 50% 35%, #303030 0%, #111 35%, #030303 78%);
+        radial-gradient(
+            circle at 50% 35%,
+            #353535 0%,
+            #151515 38%,
+            #050505 78%,
+            #000 100%
+        );
+
+    animation:
+        introExit 1.2s ease 6.4s forwards;
 }
 
-/* Cahaya belakang */
+
+/* Cahaya utama */
 
 #intro::before {
     content: "";
+
     position: absolute;
-    width: 65vw;
-    height: 65vw;
-    max-width: 650px;
-    max-height: 650px;
+
     left: 50%;
     top: 38%;
-    transform: translate(-50%, -50%);
+
+    width: 600px;
+    height: 600px;
+
+    max-width: 90vw;
+    max-height: 90vw;
+
+    transform:
+        translate(-50%, -50%);
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,.055);
-    filter: blur(80px);
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.025) 45%,
+            transparent 70%
+        );
 
-    animation: glow 4s ease-in-out infinite;
+    filter: blur(20px);
+
+    animation:
+        introGlow 4s ease-in-out infinite;
 }
 
-/* Garis cahaya */
+
+/* Cahaya bergerak */
 
 #intro::after {
     content: "";
-    position: absolute;
-    left: -20%;
-    top: 20%;
-    width: 140%;
-    height: 1px;
 
-    background: rgba(255,255,255,.12);
+    position: absolute;
+
+    left: -50%;
+    top: 20%;
+
+    width: 200%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    transform: rotate(-10deg);
 
     box-shadow:
-        0 160px rgba(255,255,255,.05),
-        0 320px rgba(255,255,255,.04),
-        0 480px rgba(255,255,255,.03);
+        0 170px rgba(255,255,255,.035),
+        0 340px rgba(255,255,255,.025),
+        0 510px rgba(255,255,255,.02);
 
-    transform: rotate(-8deg);
+    animation:
+        lightSweep 5s linear infinite;
 }
 
-/* ==================================================
+
+/* =========================================================
    SPANDUK
-================================================== */
+========================================================= */
 
 .banner {
     position: absolute;
-    left: 50%;
+
     top: 0;
+    left: 50%;
 
     width: min(900px, 92vw);
+
     height: 220px;
 
-    transform: translateX(-50%) translateY(-230px);
+    transform:
+        translateX(-50%)
+        translateY(-240px);
 
     z-index: 10;
 
@@ -93,84 +157,100 @@ body {
         linear-gradient(
             180deg,
             #292929 0%,
-            #151515 48%,
-            #0b0b0b 100%
+            #191919 45%,
+            #0c0c0c 100%
         );
 
     border:
-        1px solid rgba(255,255,255,.18);
+        1px solid rgba(255,255,255,.20);
 
     border-top: 0;
 
-    border-radius: 0 0 22px 22px;
+    border-radius:
+        0 0 24px 24px;
 
     box-shadow:
-        0 30px 70px rgba(0,0,0,.75);
+        0 30px 80px rgba(0,0,0,.8);
 
     animation:
-        bannerPull 5s cubic-bezier(.22,.75,.18,1) .8s forwards;
+        bannerPull
+        5.2s
+        cubic-bezier(.18,.8,.2,1)
+        .7s
+        forwards;
 }
 
-/* Efek lipatan kain */
+
+/* Efek kain */
 
 .banner::before {
     content: "";
+
     position: absolute;
+
     inset: 0;
 
     background:
-        linear-gradient(
+        repeating-linear-gradient(
             90deg,
-            rgba(255,255,255,.08),
-            transparent 12%,
-            rgba(255,255,255,.035) 35%,
-            transparent 52%,
-            rgba(255,255,255,.05) 72%,
-            transparent 100%
+            rgba(255,255,255,.035) 0,
+            rgba(255,255,255,.035) 2px,
+            transparent 2px,
+            transparent 55px
         );
 
     opacity: .7;
 
-    transform: translateX(-15%);
-
-    animation: clothMove 2.5s ease-in-out 1.5s infinite alternate;
+    animation:
+        clothMove 2.5s ease-in-out infinite alternate;
 }
 
-/* Pinggiran bawah */
+
+/* Bawah spanduk */
 
 .banner::after {
     content: "";
+
     position: absolute;
 
     left: 0;
-    bottom: -7px;
+    bottom: -8px;
 
     width: 100%;
-    height: 14px;
+    height: 16px;
 
-    background: #080808;
+    background: #070707;
 
-    border-radius: 0 0 50% 50%;
+    border-radius:
+        0 0 50% 50%;
 }
 
-/* Isi */
+
+/* Isi spanduk */
 
 .banner-content {
     position: relative;
+
     z-index: 2;
 
+    width: 100%;
     height: 100%;
 
     display: flex;
+
     flex-direction: column;
-    align-items: center;
+
     justify-content: center;
+
+    align-items: center;
 
     text-align: center;
 }
 
 .banner h1 {
-    font-size: clamp(32px, 8vw, 72px);
+    font-size:
+        clamp(32px, 8vw, 72px);
+
     font-weight: 900;
 
     letter-spacing: 5px;
@@ -181,13 +261,19 @@ body {
     opacity: 0;
 
     animation:
-        textAppear 1.2s ease 3s forwards;
+        bannerText
+        1.1s
+        ease
+        2.8s
+        forwards;
 }
 
 .banner p {
     margin-top: 12px;
 
-    font-size: clamp(12px, 3vw, 18px);
+    font-size:
+        clamp(12px, 3vw, 18px);
+
     letter-spacing: 3px;
 
     color: #ccc;
@@ -195,37 +281,48 @@ body {
     opacity: 0;
 
     animation:
-        textAppear 1.2s ease 3.25s forwards;
+        bannerText
+        1.1s
+        ease
+        3.1s
+        forwards;
 }
 
-/* ==================================================
+
+/* =========================================================
    ORANG
-================================================== */
+========================================================= */
 
 .person {
     position: absolute;
 
     left: 50%;
-    top: -270px;
+    top: -280px;
 
     width: 120px;
-    height: 240px;
+    height: 245px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     z-index: 20;
 
     animation:
-        personEnter 2.3s cubic-bezier(.18,.9,.25,1) .3s forwards;
+        personEnter
+        2.5s
+        cubic-bezier(.18,.9,.25,1)
+        .2s
+        forwards;
 }
+
 
 /* Kepala */
 
 .head {
     position: absolute;
 
-    left: 37px;
     top: 0;
+    left: 37px;
 
     width: 46px;
     height: 46px;
@@ -235,13 +332,14 @@ body {
     background:
         radial-gradient(
             circle at 35% 30%,
-            #ffd1aa,
-            #dc9168 75%
+            #ffd2ad,
+            #d98d65 75%
         );
 
     box-shadow:
-        0 6px 15px rgba(0,0,0,.5);
+        0 6px 18px rgba(0,0,0,.5);
 }
+
 
 /* Rambut */
 
@@ -250,123 +348,154 @@ body {
 
     position: absolute;
 
+    top: -3px;
     left: 2px;
-    top: -2px;
 
     width: 42px;
     height: 21px;
 
-    border-radius: 50% 50% 30% 30%;
+    border-radius:
+        50% 50% 30% 30%;
 
-    background: #151515;
+    background: #111;
 }
+
 
 /* Badan */
 
 .body {
     position: absolute;
 
-    left: 28px;
     top: 52px;
+    left: 28px;
 
     width: 64px;
-    height: 95px;
+    height: 96px;
 
-    border-radius: 17px 17px 12px 12px;
+    border-radius:
+        18px 18px 12px 12px;
 
     background:
         linear-gradient(
             135deg,
             #f2f2f2,
-            #898989
+            #858585
         );
 
     box-shadow:
-        0 8px 18px rgba(0,0,0,.5);
+        0 8px 20px rgba(0,0,0,.5);
 }
 
-/* Lengan */
+
+/* Tangan */
 
 .arm {
     position: absolute;
 
-    top: 57px;
+    top: 58px;
 
     width: 17px;
-    height: 86px;
+    height: 87px;
 
     border-radius: 20px;
 
     background:
         linear-gradient(
             180deg,
-            #f0a87d,
-            #c97650
+            #f1aa80,
+            #c87550
         );
 
-    transform-origin: top center;
+    transform-origin:
+        top center;
 }
 
-/*
-   Posisi awal tangan:
-   orang sedang bersiap memegang spanduk
-*/
+
+/* Tangan kiri */
 
 .arm-left {
     left: 12px;
 
-    transform: rotate(38deg);
+    transform:
+        rotate(40deg);
 
     animation:
-        pullLeft 1.1s ease-in-out 2.6s infinite alternate;
+        leftPull
+        1s
+        ease-in-out
+        2.5s
+        infinite alternate;
 }
+
+
+/* Tangan kanan */
 
 .arm-right {
     right: 12px;
 
-    transform: rotate(-38deg);
+    transform:
+        rotate(-40deg);
 
     animation:
-        pullRight 1.1s ease-in-out 2.6s infinite alternate;
+        rightPull
+        1s
+        ease-in-out
+        2.5s
+        infinite alternate;
 }
 
-/* ==================================================
-   HALAMAN UTAMA
-================================================== */
+
+/* =========================================================
+   BERANDA UTAMA
+========================================================= */
 
 #main-content {
+    position: relative;
+
     min-height: 100vh;
 
     padding:
         60px 18px
-        35px;
+        40px;
 
     opacity: 0;
 
-    transform: translateY(45px);
+    transform:
+        translateY(45px);
 
     animation:
-        pageReveal 1.4s cubic-bezier(.2,.8,.2,1) 5.8s forwards;
+        mainReveal
+        1.5s
+        cubic-bezier(.16,1,.3,1)
+        6.2s
+        forwards;
 }
 
-/* ==================================================
+
+/* =========================================================
    PROFILE
-================================================== */
+========================================================= */
 
 .profile {
     width: 100%;
+
     max-width: 650px;
 
-    margin: auto;
+    margin:
+        0 auto;
 
     text-align: center;
 }
+
+
+/* Logo */
 
 .profile-logo {
     width: 105px;
     height: 105px;
 
-    margin: 0 auto 20px;
+    margin:
+        0 auto 20px;
 
     padding: 4px;
 
@@ -375,13 +504,28 @@ body {
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,.06);
+    background:
+        rgba(255,255,255,.05);
 
     box-shadow:
-        0 0 35px rgba(255,255,255,.13);
+        0 0 0 rgba(255,255,255,0);
 
     overflow: hidden;
+
+    opacity: 0;
+
+    transform:
+        translateY(30px)
+        scale(.65);
+
+    animation:
+        logoReveal
+        1s
+        cubic-bezier(.16,1,.3,1)
+        6.45s
+        forwards;
 }
+
 
 .profile-logo img {
     width: 100%;
@@ -390,21 +534,62 @@ body {
     object-fit: cover;
 
     border-radius: 50%;
+
+    animation:
+        logoFloat
+        3s
+        ease-in-out
+        7.5s
+        infinite;
 }
 
+
+/* Nama */
+
 .profile h1 {
-    font-size: clamp(28px, 7vw, 48px);
+    font-size:
+        clamp(28px, 7vw, 48px);
+
+    font-weight: 900;
 
     letter-spacing: 4px;
 
-    font-weight: 900;
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    animation:
+        titleReveal
+        .9s
+        cubic-bezier(.16,1,.3,1)
+        6.7s
+        forwards;
 }
+
+
+/* Username */
 
 .username {
     margin-top: 8px;
 
     color: #999;
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    animation:
+        textReveal
+        .7s
+        ease
+        6.95s
+        forwards;
 }
+
+
+/* Deskripsi */
 
 .description {
     margin-top: 17px;
@@ -412,7 +597,22 @@ body {
     color: #ddd;
 
     font-size: 17px;
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    animation:
+        textReveal
+        .7s
+        ease
+        7.15s
+        forwards;
 }
+
+
+/* Status */
 
 .status {
     margin-top: 10px;
@@ -420,38 +620,65 @@ body {
     color: #aaa;
 
     font-size: 14px;
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    animation:
+        textReveal
+        .7s
+        ease
+        7.35s
+        forwards;
 }
 
-/* ==================================================
-   SOCIAL
-================================================== */
+
+/* =========================================================
+   SOSIAL
+========================================================= */
 
 .social-links {
     width: 100%;
+
     max-width: 650px;
 
-    margin: 38px auto 0;
+    margin:
+        38px auto 0;
 }
+
+
+/* Kartu */
 
 .social-card {
     position: relative;
 
     display: flex;
+
     align-items: center;
 
     gap: 17px;
+
+    width: 100%;
 
     min-height: 75px;
 
     margin-bottom: 16px;
 
-    padding: 14px 18px;
+    padding:
+        14px 18px;
 
     color: #fff;
+
     text-decoration: none;
 
     background:
-        rgba(255,255,255,.065);
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.035)
+        );
 
     border:
         1px solid rgba(255,255,255,.13);
@@ -461,23 +688,63 @@ body {
     backdrop-filter: blur(15px);
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.28);
+        0 12px 35px rgba(0,0,0,.3);
 
     overflow: hidden;
 
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        border-color .25s ease;
+    opacity: 0;
+
+    transform:
+        translateX(-45px)
+        scale(.96);
 }
+
+
+/* Kartu 1 */
+
+.social-card:nth-child(1) {
+    animation:
+        cardLeft
+        .9s
+        cubic-bezier(.16,1,.3,1)
+        7.55s
+        forwards;
+}
+
+
+/* Kartu 2 */
+
+.social-card:nth-child(2) {
+    animation:
+        cardRight
+        .9s
+        cubic-bezier(.16,1,.3,1)
+        7.75s
+        forwards;
+}
+
+
+/* Kartu 3 */
+
+.social-card:nth-child(3) {
+    animation:
+        cardLeft
+        .9s
+        cubic-bezier(.16,1,.3,1)
+        7.95s
+        forwards;
+}
+
+
+/* Kilatan */
 
 .social-card::before {
     content: "";
 
     position: absolute;
 
-    left: -120%;
     top: 0;
+    left: -130%;
 
     width: 100%;
     height: 100%;
@@ -486,73 +753,109 @@ body {
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.1),
+            rgba(255,255,255,.12),
             transparent
         );
 
-    transform: skewX(-20deg);
+    transform:
+        skewX(-20deg);
 
-    transition: .6s;
+    transition:
+        left .65s ease;
 }
+
 
 .social-card:hover::before {
-    left: 120%;
+    left: 130%;
 }
+
+
+/* Hover */
 
 .social-card:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-5px)
+        scale(1.015);
 
     background:
-        rgba(255,255,255,.12);
+        rgba(255,255,255,.13);
 
     border-color:
-        rgba(255,255,255,.28);
+        rgba(255,255,255,.30);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.45);
 }
+
+
+/* Klik */
 
 .social-card:active {
-    transform: scale(.96);
+    transform:
+        scale(.96);
 }
 
+
+/* Icon */
+
 .social-card img {
+    position: relative;
+
+    z-index: 2;
+
     width: 43px;
     height: 43px;
 
     object-fit: contain;
 
     flex-shrink: 0;
-
-    position: relative;
-    z-index: 2;
 }
+
+
+/* Text */
 
 .social-info {
     position: relative;
+
     z-index: 2;
 
     display: flex;
+
     flex-direction: column;
 
     gap: 5px;
+
+    min-width: 0;
 }
+
 
 .social-info strong {
     font-size: 17px;
 }
 
+
 .social-info small {
     color: #aaa;
 
     font-size: 13px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
 }
 
-/* ==================================================
+
+/* =========================================================
    FOOTER
-================================================== */
+========================================================= */
 
 footer {
     max-width: 650px;
 
-    margin: 55px auto 0;
+    margin:
+        55px auto 0;
 
     text-align: center;
 
@@ -561,36 +864,49 @@ footer {
     font-size: 13px;
 
     line-height: 1.8;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    animation:
+        footerReveal
+        .8s
+        ease
+        8.2s
+        forwards;
 }
 
-/* ==================================================
-   ANIMATIONS
-================================================== */
 
-/*
-   Orang masuk dari atas,
-   berhenti,
-   lalu sedikit maju ketika menarik.
-*/
+/* =========================================================
+   INTRO ANIMATION
+========================================================= */
+
+
+/* Orang masuk */
 
 @keyframes personEnter {
 
     0% {
-        top: -270px;
+        top: -280px;
+
         transform:
             translateX(-50%)
             rotate(0deg);
     }
 
-    65% {
-        top: 45px;
+    60% {
+        top: 42px;
+
         transform:
             translateX(-50%)
             rotate(-2deg);
     }
 
-    82% {
-        top: 62px;
+    80% {
+        top: 65px;
+
         transform:
             translateX(-50%)
             rotate(1deg);
@@ -598,6 +914,7 @@ footer {
 
     100% {
         top: 58px;
+
         transform:
             translateX(-50%)
             rotate(0deg);
@@ -605,33 +922,35 @@ footer {
 }
 
 
-/*
-   Spanduk bergerak terus.
-   Tidak ada lompatan dari setengah
-   langsung menjadi penuh.
-*/
+/* Spanduk turun secara bertahap */
 
 @keyframes bannerPull {
 
     0% {
         transform:
             translateX(-50%)
-            translateY(-230px);
+            translateY(-240px);
     }
 
-    12% {
+    10% {
         transform:
             translateX(-50%)
-            translateY(-180px);
+            translateY(-210px);
     }
 
-    25% {
+    20% {
         transform:
             translateX(-50%)
-            translateY(-115px);
+            translateY(-160px);
     }
 
-    38% {
+    30% {
+        transform:
+            translateX(-50%)
+            translateY(-105px);
+    }
+
+    40% {
         transform:
             translateX(-50%)
             translateY(-45px);
@@ -640,31 +959,31 @@ footer {
     50% {
         transform:
             translateX(-50%)
-            translateY(20px);
+            translateY(15px);
     }
 
-    62% {
+    60% {
         transform:
             translateX(-50%)
-            translateY(80px);
+            translateY(70px);
     }
 
-    74% {
+    70% {
         transform:
             translateX(-50%)
-            translateY(135px);
+            translateY(120px);
     }
 
-    86% {
+    80% {
         transform:
             translateX(-50%)
-            translateY(175px);
+            translateY(160px);
     }
 
-    94% {
+    90% {
         transform:
             translateX(-50%)
-            translateY(195px);
+            translateY(190px);
     }
 
     100% {
@@ -675,66 +994,77 @@ footer {
 }
 
 
-/* Gerakan tangan saat menarik */
+/* Tangan kiri */
 
-@keyframes pullLeft {
+@keyframes leftPull {
 
     0% {
-        transform: rotate(38deg);
+        transform:
+            rotate(40deg);
     }
 
     50% {
-        transform: rotate(58deg);
+        transform:
+            rotate(58deg);
     }
 
     100% {
-        transform: rotate(42deg);
-    }
-}
-
-@keyframes pullRight {
-
-    0% {
-        transform: rotate(-38deg);
-    }
-
-    50% {
-        transform: rotate(-58deg);
-    }
-
-    100% {
-        transform: rotate(-42deg);
+        transform:
+            rotate(43deg);
     }
 }
 
 
-/* Kain bergerak */
+/* Tangan kanan */
+
+@keyframes rightPull {
+
+    0% {
+        transform:
+            rotate(-40deg);
+    }
+
+    50% {
+        transform:
+            rotate(-58deg);
+    }
+
+    100% {
+        transform:
+            rotate(-43deg);
+    }
+}
+
+
+/* Kain */
 
 @keyframes clothMove {
 
-    from {
-        transform: translateX(-15%);
+    0% {
+        transform:
+            translateX(-8%);
     }
 
-    to {
-        transform: translateX(15%);
+    100% {
+        transform:
+            translateX(8%);
     }
 }
 
 
-/* Teks muncul setelah spanduk turun */
+/* Teks intro */
 
-@keyframes textAppear {
+@keyframes bannerText {
 
-    from {
+    0% {
         opacity: 0;
 
         transform:
-            translateY(15px)
+            translateY(18px)
             scale(.97);
     }
 
-    to {
+    100% {
         opacity: 1;
 
         transform:
@@ -744,9 +1074,217 @@ footer {
 }
 
 
-/* Cahaya */
+/* Intro keluar */
 
-@keyframes glow {
+@keyframes introExit {
+
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+
+/* =========================================================
+   BERANDA ANIMATION
+========================================================= */
+
+@keyframes mainReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(45px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes logoReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(.65);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translateY(-5px)
+            scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes logoFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-5px);
+    }
+}
+
+
+@keyframes titleReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(.96);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translateY(-3px)
+            scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes textReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes cardLeft {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(-45px)
+            scale(.96);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translateX(5px)
+            scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+}
+
+
+@keyframes cardRight {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(45px)
+            scale(.96);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translateX(-5px)
+            scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+}
+
+
+@keyframes footerReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   INTRO LIGHT
+========================================================= */
+
+@keyframes introGlow {
 
     0%,
     100% {
@@ -762,34 +1300,30 @@ footer {
             translate(-50%, -50%)
             scale(1.15);
 
-        opacity: .7;
+        opacity: .75;
     }
 }
 
 
-/* Halaman muncul setelah intro */
+@keyframes lightSweep {
 
-@keyframes pageReveal {
-
-    from {
-        opacity: 0;
-
+    0% {
         transform:
-            translateY(45px);
+            translateX(-15%)
+            rotate(-10deg);
     }
 
-    to {
-        opacity: 1;
-
+    100% {
         transform:
-            translateY(0);
+            translateX(15%)
+            rotate(-10deg);
     }
 }
 
 
-/* ==================================================
+/* =========================================================
    MOBILE
-================================================== */
+========================================================= */
 
 @media (max-width: 600px) {
 
@@ -804,6 +1338,14 @@ footer {
         height: 190px;
     }
 
+    .banner h1 {
+        letter-spacing: 3px;
+    }
+
+    .banner p {
+        letter-spacing: 2px;
+    }
+
     .person {
         transform:
             translateX(-50%)
@@ -813,10 +1355,15 @@ footer {
     .social-card {
         min-height: 70px;
 
-        padding: 12px 15px;
+        padding:
+            12px 15px;
     }
 
     .social-info strong {
         font-size: 16px;
     }
-   }
+
+    .social-info small {
+        font-size: 12px;
+    }
+    }
