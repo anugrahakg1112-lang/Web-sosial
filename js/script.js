@@ -1,14 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const intro = document.getElementById("intro");
-    const home = document.getElementById("home");
-    const board = document.querySelector(".home-board");
     const cards = document.querySelectorAll(".social-card");
 
-
-    /* ==========================================
-       INTRO SELESAI
-    ========================================== */
+    /*
+     * Intro benar-benar dihapus setelah
+     * seluruh animasi selesai.
+     */
 
     setTimeout(() => {
 
@@ -19,148 +17,80 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 7900);
 
 
-    /* ==========================================
-       KARTU SOSIAL
-    ========================================== */
+    /*
+     * Efek tekan kartu sosial
+     */
 
     cards.forEach((card) => {
 
         card.addEventListener("pointerdown", () => {
-
-            card.classList.add("pressed");
-
+            card.style.transform = "scale(.97)";
         });
-
 
         card.addEventListener("pointerup", () => {
-
-            card.classList.remove("pressed");
-
+            card.style.transform = "";
         });
-
 
         card.addEventListener("pointercancel", () => {
-
-            card.classList.remove("pressed");
-
+            card.style.transform = "";
         });
 
-
         card.addEventListener("pointerleave", () => {
-
-            card.classList.remove("pressed");
-
+            card.style.transform = "";
         });
 
     });
 
 
-    /* ==========================================
-       EFEK PAPAN BERANDA SAAT SCROLL
-    ========================================== */
+    /*
+     * Efek gerak papan mengikuti sedikit scroll.
+     * Tidak mengganggu animasi naik-turun CSS.
+     */
 
-    let ticking = false;
+    const board =
+        document.querySelector(".home-board");
+
+    let scrolling = false;
 
     window.addEventListener("scroll", () => {
 
-        if (!ticking) {
+        if (scrolling) return;
 
-            window.requestAnimationFrame(() => {
+        scrolling = true;
 
-                if (board) {
+        requestAnimationFrame(() => {
 
-                    const scroll =
-                        window.scrollY;
+            if (board) {
 
-                    const movement =
-                        Math.min(scroll * 0.025, 12);
+                const amount =
+                    Math.min(
+                        window.scrollY * 0.02,
+                        10
+                    );
 
-                    board.style.transform =
-                        `translateY(${movement}px)`;
+                board.style.setProperty(
+                    "--scroll-y",
+                    `${amount}px`
+                );
+            }
 
-                }
+            scrolling = false;
 
-                ticking = false;
-
-            });
-
-            ticking = true;
-
-        }
+        });
 
     });
 
 
-    /* ==========================================
-       TOMBOL KEMBALI KE POSISI NORMAL
-    ========================================== */
+    /*
+     * Reset ketika halaman dibuka kembali
+     */
 
     window.addEventListener("pageshow", () => {
 
         cards.forEach((card) => {
-
-            card.classList.remove("pressed");
-
+            card.style.transform = "";
         });
-
-        if (board) {
-            board.style.transform = "";
-        }
 
     });
-
-
-    /* ==========================================
-       PARALLAX HALUS PADA MOUSE
-       Desktop saja
-    ========================================== */
-
-    if (window.matchMedia("(pointer:fine)").matches) {
-
-        document.addEventListener("mousemove", (event) => {
-
-            if (!board) return;
-
-            const x =
-                (event.clientX / window.innerWidth - .5);
-
-            const y =
-                (event.clientY / window.innerHeight - .5);
-
-            board.style.setProperty(
-                "--mouse-x",
-                `${x * 5}px`
-            );
-
-            board.style.setProperty(
-                "--mouse-y",
-                `${y * 5}px`
-            );
-
-        });
-
-    }
-
-
-    /* ==========================================
-       LINK EXTERNAL
-    ========================================== */
-
-    document.querySelectorAll("a[target='_blank']")
-        .forEach((link) => {
-
-            link.addEventListener("click", () => {
-
-                link.style.opacity = ".75";
-
-                setTimeout(() => {
-
-                    link.style.opacity = "";
-
-                }, 300);
-
-            });
-
-        });
 
 });
