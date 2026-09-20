@@ -1,15 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const intro = document.getElementById("intro");
-    const home = document.getElementById("home");
 
-    const socialCards =
+    const cards =
         document.querySelectorAll(".social-card");
 
 
-    /*
-     * Intro selesai setelah animasi.
-     */
+    /* =========================
+       INTRO
+    ========================== */
 
     setTimeout(() => {
 
@@ -17,52 +16,116 @@ document.addEventListener("DOMContentLoaded", () => {
             intro.remove();
         }
 
-    }, 8200);
+    }, 8500);
 
 
-    /*
-     * Efek tombol sosial
-     */
+    /* =========================
+       SOCIAL CARD PRESS
+    ========================== */
 
-    socialCards.forEach(card => {
+    cards.forEach(card => {
 
-        card.addEventListener("pointerdown", () => {
+        card.addEventListener(
+            "pointerdown",
+            () => {
 
-            card.style.transform =
-                "scale(.97)";
+                card.style.transform =
+                    "scale(.97)";
 
-        });
-
-
-        card.addEventListener("pointerup", () => {
-
-            card.style.transform = "";
-
-        });
+            }
+        );
 
 
-        card.addEventListener("pointercancel", () => {
+        card.addEventListener(
+            "pointerup",
+            () => {
 
-            card.style.transform = "";
+                card.style.transform = "";
 
-        });
+            }
+        );
+
+
+        card.addEventListener(
+            "pointercancel",
+            () => {
+
+                card.style.transform = "";
+
+            }
+        );
+
+
+        card.addEventListener(
+            "pointerleave",
+            () => {
+
+                card.style.transform = "";
+
+            }
+        );
 
     });
 
 
-    /*
-     * Jika user kembali ke halaman
-     * setelah berpindah aplikasi.
-     */
+    /* =========================
+       PARALLAX BOARD
+       Hanya aktif di perangkat
+       yang punya pointer.
+    ========================== */
+
+    const board =
+        document.querySelector(".home-board");
+
+
+    if (
+        board &&
+        window.matchMedia("(pointer:fine)").matches
+    ) {
+
+        document.addEventListener(
+            "mousemove",
+            event => {
+
+                const x =
+                    (event.clientX /
+                        window.innerWidth -
+                        0.5) * 4;
+
+                const y =
+                    (event.clientY /
+                        window.innerHeight -
+                        0.5) * 4;
+
+                board.style.setProperty(
+                    "--mouse-x",
+                    `${x}px`
+                );
+
+                board.style.setProperty(
+                    "--mouse-y",
+                    `${y}px`
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       VISIBILITY
+    ========================== */
 
     document.addEventListener(
         "visibilitychange",
         () => {
 
-            if (!document.hidden && home) {
+            if (!document.hidden) {
 
-                home.style.animationPlayState =
-                    "running";
+                document.documentElement
+                    .style
+                    .scrollBehavior = "smooth";
 
             }
 
